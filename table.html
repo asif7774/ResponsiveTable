@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="HandheldFriendly" content="true" />
+<title>Untitled Document</title>
+
+<style type="text/css">
+table.responsiveTable { 
+  margin: 0 auto;
+  border-collapse: collapse;
+  font-family: Agenda-Light, sans-serif;
+  font-weight: 100; 
+  background: #333; color: #fff;
+  text-rendering: optimizeLegibility;
+  border-radius: 5px; 
+}
+table.responsiveTable thead th { font-weight: 600; }
+table.responsiveTable thead th, table.responsiveTable tbody td { 
+  padding: .8rem; font-size: 1.4rem;
+}
+table.responsiveTable tbody td { 
+  padding: .8rem; font-size: 1.4rem;
+  color: #444; background: #eee; 
+}
+table.responsiveTable tbody tr:not(:last-child) { 
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;  
+}
+
+@media screen and (max-width: 600px) {
+  table.responsiveTable caption { background-image: none; }
+  table.responsiveTable thead { display: none; }
+  table.responsiveTable tbody td { 
+    display: block; padding: .6rem; 
+  }
+  table.responsiveTable tbody tr td:first-child { 
+    background: #666; color: #fff; 
+  }
+	table.responsiveTable tbody td:before { 
+    content: attr(data-th); 
+    font-weight: bold;
+    display: table-cell;
+    width: 6rem;  
+  }
+  table.responsiveTable tbody td span{display:table-cell;}
+}
+</style>
+</head>
+
+<body>
+<table class="responsiveTable">
+  <thead>
+    <tr>
+      <th>Film</th>
+      <th>Year</th>
+      <th>Honor</th>
+    </tr>
+  </thead>    
+  <tbody>
+    <tr>
+      <td><span>My Neighbor Totoro<span></td>
+      <td><span>1988<span></td>
+      <td><span>Blue Ribbon Award (Special)</span></td>
+    </tr>  
+    <tr>
+      <td><span>Princess Mononoke</span></td>
+      <td><span>1997</span></td>
+      <td><span>Nebula Award (Best Script)</span></td>
+    </tr>  
+    <tr>
+      <td><span>Spirited Away<span></td>
+      <td><span>2001</span></td>
+      <td><span>Academy Award (Best Animated Feature)</span></td>
+    </tr>  
+    <tr>
+      <td><span>Howl’s Moving Castle</span></td>
+      <td><span>2004</span></td>
+      <td><span>Hollywood Film Festival (Animation OTY)</span></td>
+    </tr>  
+</table>
+</body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+var headertext = [],
+headers = document.querySelectorAll(".responsiveTable th"),
+tablerows = document.querySelectorAll(".responsiveTable th"),
+tablebody = document.querySelector(".responsiveTable tbody");
+
+for(var i = 0; i < headers.length; i++) {
+  var current = headers[i];
+  headertext.push(current.textContent.replace(/\r?\n|\r/,""));
+} 
+for (var i = 0, row; row = tablebody.rows[i]; i++) {
+  for (var j = 0, col; col = row.cells[j]; j++) {
+    col.setAttribute("data-th", headertext[j]);
+  } 
+}
+</script>
+</html>
